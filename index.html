@@ -1,11 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Galeria Infantil - 50 Atividades</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #ffeaa7;
+            letter-spacing: 2px;
+            word-break: break-word;
+        }
+
+        h1 span {
+            display: inline-block;
+            background-color: #fdcb6e;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.5em;
+            vertical-align: middle;
+            margin-left: 15px;
+            color: #2d3436;
+            text-shadow: none;
+            box-shadow: 0 4px 0 #e17055;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #00b894;
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            font-style: italic;
+            background-color: #dfe6e9;
+            padding: 15px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            padding: 15px 40px;
+            box-shadow: 0 5px 0 #b2bec3;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #ff7675;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item::before {
+            content: "🖍️";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px dashed #74b9ff;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+            border-radius: 12px;
+        }
+
+        .gallery-item img[alt="placeholder"] {
+            opacity: 0.7;
+            filter: grayscale(30%);
+        }
+
+        .activity-number {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #0984e3;
+            font-size: 1.1em;
+            background-color: #ffeaa7;
+            padding: 5px;
+            border-radius: 20px;
+            border: 2px solid #fdcb6e;
+        }
+
+        .legend {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #ffd93e, #ff9f43);
+            border-radius: 60px;
+            color: #2d3436;
+            font-weight: bold;
+            font-size: 1.2em;
+            border: 4px solid white;
+            box-shadow: 0 5px 0 #e67e22;
+        }
+
+        .legend span {
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            margin: 0 5px;
+            display: inline-block;
+        }
+
+        .footer-notes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            color: #636e72;
+            font-size: 0.9em;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .emoji-decoration {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0 0;
+            word-spacing: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-    eu não sei o que estou fazendo!!
+    <div class="container">
+        <h1>
+            🎨 Galeria Criativa 
+            <span>50 atividades</span>
+        </h1>
+        
+        <div class="subtitle">
+            ✨ Clique nos espaços para adicionar suas imagens ✨
+        </div>
+
+        <div class="gallery">
+            <!-- Geração automática de 50 itens via JavaScript -->
+        </div>
+
+        <div class="legend">
+            🌟 <span>50 espaços prontos</span> para suas atividades infantis 🌟
+        </div>
+
+        <div class="emoji-decoration">
+            🎈 🧸 🎨 ✏️ 📚 🎭 🎪 🎯 🎲 🧩
+        </div>
+
+        <div class="footer-notes">
+            <span>📸 Substitua os links das imagens</span>
+            <span>🖼️ 50 espaços em grade</span>
+            <span>🌈 Design divertido e colorido</span>
+        </div>
+    </div>
+
+    <script>
+        // Função para gerar a galeria com 50 itens
+        function generateGallery() {
+            const gallery = document.querySelector('.gallery');
+            
+            // Lista de imagens de exemplo relacionadas a atividades infantis
+            const exampleImages = [
+                'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=200&h=200&fit=crop', // criança desenhando
+                'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=200&h=200&fit=crop', // brinquedos
+                'https://images.unsplash.com/photo-1590004957618-5a6a1a1a1a1a?w=200&h=200&fit=crop', // pintura
+                'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=200&h=200&fit=crop', // blocos de montar
+                'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=200&h=200&fit=crop', // livro infantil
+                'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=200&h=200&fit=crop', // massinha
+                'https://images.unsplash.com/photo-1590004957618-5a6a1a1a1a1a?w=200&h=200&fit=crop', // quebra-cabeça
+                'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=200&h=200&fit=crop', // teatro
+                'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=200&h=200&fit=crop', // música
+                'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=200&h=200&fit=crop'  // atividades ao ar livre
+            ];
+
+            // Lista de descrições para as atividades
+            const activities = [
+                'Desenho livre', 'Pintura com guache', 'Massinha de modelar', 'Recorte e colagem',
+                'Quebra-cabeça', 'Leitura de história', 'Brincadeira com blocos', 'Teatro de fantoches',
+                'Música e dança', 'Atividade ao ar livre', 'Jogo da memória', 'Caça ao tesouro',
+                'Pintura com giz', 'Modelagem com argila', 'Origami', 'Pintura digital',
+                'Jogo de tabuleiro', 'Brincadeira de roda', 'Contação de histórias', 'Desenho com giz de cera',
+                'Pintura com esponja', 'Colagem com papel picado', 'Jogo de encaixe', 'Atividade sensorial',
+                'Brincadeira com água', 'Pintura com carimbo', 'Desenho com lápis de cor', 'Modelagem com massinha',
+                'Jogo de montar', 'Atividade com barbante', 'Pintura com cotonete', 'Desenho com carvão',
+                'Brincadeira de imitação', 'Jogo de adivinhação', 'Atividade com música', 'Pintura com rolinho',
+                'Desenho em grupo', 'Brincadeira com bola', 'Jogo de equilíbrio', 'Atividade com sombras',
+                'Pintura ao ar livre', 'Desenho com nanquim', 'Modelagem com areia', 'Jogo de construção',
+                'Atividade com texturas', 'Brincadeira de esconde-esconde', 'Pintura com spray', 'Desenho cooperativo',
+                'Jogo de ritmo', 'Atividade de relaxamento'
+            ];
+
+            for (let i = 1; i <= 50; i++) {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                
+                // Escolhe uma imagem aleatória da lista (para exemplo)
+                const randomImage = exampleImages[Math.floor(Math.random() * exampleImages.length)];
+                
+                // Para os primeiros 10 itens, coloca imagens reais, para os demais, placeholder
+                let imageUrl;
+                if (i <= 10) {
+                    imageUrl = randomImage; // imagens reais para os primeiros 10
+                } else {
+                    imageUrl = `https://via.placeholder.com/200x200/FFB6C1/FF69B4?text=Atividade+${i}`; // placeholder colorido
+                }
+
+                item.innerHTML = `
+                    <div class="image-container">
+                        <img src="${imageUrl}" 
+                             alt="Atividade infantil ${i} - ${activities[i-1]}"
+                             title="Clique para substituir a imagem"
+                             onclick="this.src=prompt('Digite o URL da nova imagem:', this.src) || this.src">
+                    </div>
+                    <div class="activity-number">
+                        🎯 ${activities[i-1]}
+                    </div>
+                `;
+                
+                gallery.appendChild(item);
+            }
+        }
+
+        // Executa a função quando a página carregar
+        window.onload = generateGallery;
+
+        // Função adicional para permitir trocar qualquer imagem clicando nela
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                // A funcionalidade já está no onclick do img, mas podemos adicionar um feedback
+                console.log('Imagem clicada - pode substituir o link');
+            }
+        });
+    </script>
 </body>
 </html>
